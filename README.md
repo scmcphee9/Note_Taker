@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This is a application that you can create notes and save them. When you are done with them, you can delete them. https://scmcphee9.github.io/Note_Taker/ or
+This is a application that you can create notes and save them. When you are done with them, you can delete them. https://scmcphee9.github.io/Note_Taker/ or https://afternoon-dawn-66402.herokuapp.com/
 
 <img src = "screenshot.png" alt="Weather App Screenshot">
 
