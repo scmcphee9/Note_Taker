@@ -48,26 +48,26 @@ module.exports = (app) => {
       });
   });
 
-  // app.delete("/api/notes",(req, res) => {
-  //   readfileasync("./db/db.json", "utf8")
-  //   .then((currentNotes) => {
-  //     let current = JSON.parse(currentNotes);
+  app.delete("/api/notes/:id", (req, res) => {
+    readfileasync("./db/db.json", "utf8")
+      .then((currentNotes) => {
+        let allNotes = JSON.parse(currentNotes);
 
-  //     const newNote = {
-  //       title: req.body.title,
-  //       text: req.body.text,
-  //       id: uuidv4(),
-  //     };
+        const noteID = req.body.id;
 
-  //     const updatedNotes = [...current, newNote];
+        const updatedNotes = [...allNotes];
 
-  //     console.log(updatedNotes);
+        console.log(noteID);
+        // console.log(allNotes);
 
-  //     return updatedNotes;
-  //   })
-  //   .then((data) => {
-  //     writefileasync("./db/db.json", JSON.stringify(data));
-  //   });
+        const newNotes = updatedNotes.splice(noteID, 1);
+        console.log(newNotes);
 
-  // })
+        return newNotes;
+        // res.send(newNotes);
+      })
+      .then((data) => {
+        writefileasync("./db/db.json", JSON.stringify(data));
+      });
+  });
 };
