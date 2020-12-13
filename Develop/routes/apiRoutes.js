@@ -55,12 +55,12 @@ module.exports = (app) => {
 
         const noteID = req.body.id;
 
-        const updatedNotes = [...allNotes];
+        // const updatedNotes = [...allNotes];
 
         console.log(noteID);
         // console.log(allNotes);
 
-        const newNotes = updatedNotes.splice(noteID, 1);
+        const newNotes = allNotes.splice(noteID, 1);
         console.log(newNotes);
 
         return newNotes;
