@@ -1,10 +1,6 @@
 const express = require("express");
-const path = require("path");
-// const db = require("./db/db.json");
 
 const app = express();
-// const apiRoutes = path.basename("./routes/apiRoutes.js");
-// const htmlRoutes = path.basename("./routes/htmlRoutes.js");
 
 const PORT = process.env.PORT || 3000;
 
