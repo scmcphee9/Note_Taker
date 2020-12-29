@@ -38,21 +38,41 @@ module.exports = (app) => {
 
   // this deletes all notes, need to make it delete just one note.  on postman it was working when it was just api/notes not with the id
   app.delete("/api/notes/:id", (req, res) => {
+    const chosenID = req.params.id;
+    // console.log(chosenID);
+
     readfileasync("./db/db.json", "utf8")
       .then((currentNotes) => {
+        // console.log(currentNotes);
         let allNotes = JSON.parse(currentNotes);
+        console.log("all notes: " + allNotes);
 
-        const noteID = req.body;
+        // const newNote = {
+        //   title: req.body.title,
+        //   text: req.body.text,
+        //   id: uuidv4(),
+        // };
 
         // const updatedNotes = [...allNotes];
 
-        console.log(noteID);
+        // const noteID = req.body;
+
+        // const updatedNotes = [...allNotes];
+
+        // console.log(noteID);
         // console.log(allNotes);
+        // const removeNote = allNotes.find(
+        //   (specialID) => specialID.id === chosenID
+        // );
+        let removeNote = allNotes
+          .map((specialID) => specialID.id)
+          .indexOf(chosenID);
 
-        const newNotes = allNotes.splice(noteID, 1);
-        console.log(newNotes);
+        let newNoteArr = allNotes.splice(removeNote, 1);
+        console.log("remove note: " + removeNote);
+        console.log(newNoteArr);
 
-        return newNotes;
+        return newNoteArr;
         // res.send(newNotes);
       })
       .then((data) => {
