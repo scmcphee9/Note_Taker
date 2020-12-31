@@ -45,34 +45,21 @@ module.exports = (app) => {
       .then((currentNotes) => {
         // console.log(currentNotes);
         let allNotes = JSON.parse(currentNotes);
-        console.log("all notes: " + allNotes);
 
-        // const newNote = {
-        //   title: req.body.title,
-        //   text: req.body.text,
-        //   id: uuidv4(),
-        // };
+        console.log("--------------------");
+        console.log(allNotes);
+        console.log("--------------------");
 
-        // const updatedNotes = [...allNotes];
-
-        // const noteID = req.body;
-
-        // const updatedNotes = [...allNotes];
-
-        // console.log(noteID);
-        // console.log(allNotes);
-        // const removeNote = allNotes.find(
-        //   (specialID) => specialID.id === chosenID
-        // );
         let removeNote = allNotes
           .map((specialID) => specialID.id)
           .indexOf(chosenID);
 
-        let newNoteArr = allNotes.splice(removeNote, 1);
-        console.log("remove note: " + removeNote);
-        console.log(newNoteArr);
+        allNotes.splice(removeNote, 1);
 
-        return newNoteArr;
+        console.log("remove note array location: " + removeNote);
+        console.log(allNotes);
+
+        return allNotes;
         // res.send(newNotes);
       })
       .then((data) => {
@@ -81,3 +68,21 @@ module.exports = (app) => {
       });
   });
 };
+
+// const newNote = {
+//   title: req.body.title,
+//   text: req.body.text,
+//   id: uuidv4(),
+// };
+
+// const updatedNotes = [...allNotes];
+
+// const noteID = req.body;
+
+// const updatedNotes = [...allNotes];
+
+// console.log(noteID);
+// console.log(allNotes);
+// const removeNote = allNotes.find(
+//   (specialID) => specialID.id === chosenID
+// );
